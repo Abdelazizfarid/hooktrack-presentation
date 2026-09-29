@@ -26,7 +26,7 @@
     <h1>Hook Track</h1>
     <p class="lead">Plan the day. Sell the range. Trust every visit.</p>
     <div class="chips stagger">
-      <span class="chip">ERP + mobile app</span><span class="chip">Products · prices · promotions</span><span class="chip">Anti fake-GPS · root detection</span><span class="chip">Live map · reports · targets</span>
+      <span class="chip">ERP + mobile app</span><span class="chip">Products · prices · promotions</span><span class="chip">Anti fake-GPS · root detection</span><span class="chip">Live map · reports · targets</span><span class="chip">HR · attendance · payroll</span><span class="chip">Inventory · purchasing</span>
     </div>
   </div>
 </section>
@@ -54,7 +54,7 @@
         <span class="kicker">The platform</span>
         <h2>One system, two halves</h2>
         <div class="cards stagger" style="margin-top:8px">
-          <div class="card"><h3>🖥️ ERP — the control tower</h3><p>Products, price lists, promotions, customers, areas. Plan visits per rep, watch the map live, run every report.</p></div>
+          <div class="card"><h3>🖥️ ERP — the control tower</h3><p>Products, price lists, promotions, customers, areas, visit plans — plus HR (attendance, leave, payroll) and inventory &amp; purchasing. One database, every report.</p></div>
           <div class="card"><h3>📱 Mobile app — the field</h3><p>Today's plan, navigation, geofenced check-in, shelf check, order with automatic pricing and promos, offline sync. Hardened against location fraud.</p></div>
         </div>
         <p class="frag" style="margin-top:8px">Both share one truth: <span class="teal">the visit record</span> — verified location, device state, and the order behind it.</p>
@@ -359,17 +359,255 @@
   </div>
 </section>
 
+<!-- HR 1 CYCLE -->
+<section class="slide" data-name="hr-cycle">
+  <div class="content">
+    <div class="split">
+      <div>
+        <span class="kicker">HR module · the cycle</span>
+        <h2>From hiring to payslip, in one loop</h2>
+        <p>Every employee — field rep, driver, warehouse keeper, office staff — is defined once. Attendance comes from the phone, leave follows the rules, payroll computes itself.</p>
+        <ul class="steps" id="hrlist">
+          <li><span class="n">1</span>Employees, contracts, shifts and salary structure</li>
+          <li><span class="n">2</span>Attendance &amp; leave rules</li>
+          <li><span class="n">3</span>Check-in / check-out from the mobile app</li>
+          <li><span class="n">4</span>Time-off requests and approvals</li>
+          <li><span class="n">5</span>Payroll run → payslips → bank file</li>
+        </ul>
+      </div>
+      <div class="cycle" id="hrcycle"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HR 2 EMPLOYEES & RULES -->
+<section class="slide" data-name="hr-employees">
+  <div class="content">
+    <div class="split">
+      <div>
+        <span class="kicker">HR · steps 1–2</span>
+        <h2>Define employees, then the rules</h2>
+        <p>Name, role, department, shift, salary type. Rules are set once and applied to everyone on that shift — the app and the payroll both read them.</p>
+        <table class="tbl" id="emptbl" style="margin-top:8px">
+          <tr><th>Employee</th><th>Role</th><th>Dept</th><th>Shift</th><th>Salary</th></tr>
+          <tr class="anim"><td>Ahmed Samir</td><td>Sales rep</td><td>Field sales</td><td>09:00–17:00</td><td>Basic + commission</td></tr>
+          <tr class="anim"><td>Mona Khaled</td><td>Sales rep</td><td>Field sales</td><td>09:00–17:00</td><td>Basic + commission</td></tr>
+          <tr class="anim"><td>Hany Fouad</td><td>Warehouse keeper</td><td>Inventory</td><td>08:00–16:00</td><td>Basic</td></tr>
+          <tr class="anim"><td>Karim Nabil</td><td>Driver</td><td>Logistics</td><td>07:30–15:30</td><td>Basic + overtime</td></tr>
+          <tr class="anim"><td>Dina Mostafa</td><td>HR specialist</td><td>HR</td><td>09:00–17:00</td><td>Basic</td></tr>
+        </table>
+        <div class="chips" id="rulechips" style="margin-top:10px">
+          <span class="chip r">⏰ Shift 09:00–17:00</span><span class="chip r">🕒 Grace 15 min</span><span class="chip r">⚠️ Late penalty after 3 lates</span><span class="chip r">➕ Overtime after 17:30 · 1.5×</span><span class="chip r">🏖️ Annual 21 d · Sick 7 d · Casual 6 d</span><span class="chip r">✅ Approval: manager → HR</span>
+        </div>
+      </div>
+      <div style="display:grid;gap:10px;height:100%;min-height:0;align-content:center">
+        <img class="pic wide" src="img/erp-employees.webp" alt="Hook Track ERP — Employees screen" style="max-height:36vh">
+        <img class="pic wide" src="img/erp-rules.webp" alt="Hook Track ERP — Attendance and leave rules" style="max-height:36vh">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HR 3 MOBILE ATTENDANCE -->
+<section class="slide" data-name="hr-attendance">
+  <div class="content">
+    <div class="split rev">
+      <div style="display:grid;grid-template-columns:236px 1fr;gap:20px;align-items:center;justify-items:center">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen">
+            <div class="app att">
+              <div class="top"><b>Attendance</b><small>Tue 29 Sep 2026 · Ahmed Samir</small></div>
+              <div class="attbody">
+                <div class="clock" id="attClock">08:51</div>
+                <div class="cin" id="attBtn">CHECK IN</div>
+                <div class="attmsg" id="attMsg">Tap to check in at your first location</div>
+                <div class="attcard" id="attCard"><b>Today</b><small>In — · Out —</small></div>
+              </div>
+              <div class="tabs"><span>Plan</span><span>Visits</span><span>Orders</span><b>Attendance</b><span>Profile</span></div>
+            </div>
+          </div>
+        </div>
+        <img class="pic" src="img/app-attendance.webp" alt="Hook Track app — attendance screen" style="aspect-ratio:9/16;max-height:62vh;width:auto">
+      </div>
+      <div>
+        <span class="kicker">HR · step 3 · mobile app</span>
+        <h2>Attendance from the phone — verified like a visit</h2>
+        <div class="cards stagger" style="margin-top:8px">
+          <div class="card"><h3>📍 Geofenced check-in</h3><p>Allowed at the depot, the branch, or the first planned customer — with the same fake-GPS and root checks as a visit.</p></div>
+          <div class="card"><h3>🤳 Selfie + time stamp</h3><p>Optional selfie, sealed with GPS accuracy and device state. No buddy punching.</p></div>
+          <div class="card"><h3>⏱️ Late, early, overtime</h3><p>Computed against the employee's shift and grace period the moment the check-in lands in the ERP.</p></div>
+        </div>
+        <p class="frag">Forgot to check out? The app reminds at shift end; HR can correct with an audit trail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HR 4 ATTENDANCE DASHBOARD -->
+<section class="slide rep" data-name="hr-dash">
+  <div class="content">
+    <div class="rhead">
+      <div><span class="kicker">HR · attendance dashboard</span><h2>Who came, who didn't, and when</h2></div>
+      <div class="tiles" id="attTiles"></div>
+    </div>
+    <div class="rbody two ui" style="grid-template-columns:1.05fr .95fr">
+      <div class="card" id="attTable"></div>
+      <div class="card" style="padding:8px;justify-content:center"><img src="img/erp-attendance.webp" alt="Hook Track ERP — Attendance dashboard" style="width:100%;border-radius:12px;border:1px solid var(--line)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HR 5 TIME OFF -->
+<section class="slide" data-name="hr-timeoff">
+  <div class="content">
+    <div class="split" style="grid-template-columns:1.4fr .8fr">
+      <div>
+        <span class="kicker">HR · step 4</span>
+        <h2>Time off: request on the phone, approve in the ERP</h2>
+        <p>The rules decide what is allowed; the manager decides what is approved. Balances update instantly, and the visit plan is reassigned for the days off.</p>
+        <div class="flow" id="toflow" style="margin-top:8px">
+          <div class="fstep"><span class="ic">📱</span><span><b>Request submitted</b><small>Ahmed S. · Annual leave · Oct 5–7 · 3 days · 08:10</small></span></div>
+          <div class="fstep"><span class="ic">📏</span><span><b>Rules checked</b><small>Notice ≥ 3 days ✓ · balance 14 ≥ 3 ✓ · not in month-end blackout ✓</small></span></div>
+          <div class="fstep"><span class="ic">👩‍💼</span><span><b>Manager approval</b><small>Notified in the ERP and by email · approved 11:32</small></span></div>
+          <div class="fstep"><span class="ic">🗓️</span><span><b>Plan reassigned</b><small>21 visits on Oct 5–7 moved to Mona K.</small></span></div>
+          <div class="fstep"><span class="ic">💼</span><span><b>Balance updated</b><small>Annual leave 14 → <b class="green">11</b> days · visible on the phone</small></span></div>
+        </div>
+        <div class="chips" id="tochips" style="margin-top:8px"><span class="chip r">Notice ≥ 3 days</span><span class="chip r">Max 10 consecutive</span><span class="chip r">Blackout: last 3 days of month</span><span class="chip r">Sick leave needs certificate</span></div>
+      </div>
+      <img class="pic" src="img/app-timeoff.webp" alt="Hook Track app — time-off request" style="aspect-ratio:9/16;max-height:68vh;width:auto;justify-self:center">
+    </div>
+  </div>
+</section>
+
+<!-- HR 6 PAYROLL -->
+<section class="slide" data-name="hr-payroll">
+  <div class="content">
+    <div class="split">
+      <div>
+        <span class="kicker">HR · step 5</span>
+        <h2>Payroll computes itself from attendance and sales</h2>
+        <p>Basic salary, commission from verified orders, overtime from check-outs, deductions from late days and unpaid leave — one run per month, one payslip per employee.</p>
+        <div class="payslip" id="payslip">
+          <div class="ph"><b>Payslip · September 2026</b><small>Ahmed Samir · Sales representative · HT-0012</small></div>
+          <div class="pl"><span>Basic salary</span><span>6,000</span></div>
+          <div class="pl"><span>Sales commission · 2.5% of 236,400</span><span>5,910</span></div>
+          <div class="pl"><span>Overtime · 12 h × 1.5</span><span>450</span></div>
+          <div class="pl sub"><span>Total earnings</span><span>12,360</span></div>
+          <div class="pl neg"><span>Late deductions · 3 days</span><span>−150</span></div>
+          <div class="pl neg"><span>Unpaid leave</span><span>0</span></div>
+          <div class="pl neg"><span>Social insurance · 11%</span><span>−660</span></div>
+          <div class="pl neg"><span>Income tax</span><span>−420</span></div>
+          <div class="pl net"><span>Net pay (EGP)</span><span id="netPay">0</span></div>
+        </div>
+      </div>
+      <div style="display:grid;gap:10px;align-content:center">
+        <img class="pic wide" src="img/erp-payslip.webp" alt="Hook Track ERP — payslip">
+        <div class="chips stagger"><span class="chip">1 · Close attendance</span><span class="chip">2 · Apply leave &amp; deductions</span><span class="chip">3 · Pull commissions</span><span class="chip">4 · Approve run</span><span class="chip">5 · Payslips + bank file</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INV 1 CYCLE -->
+<section class="slide" data-name="inv-cycle">
+  <div class="content">
+    <div class="split">
+      <div>
+        <span class="kicker">Inventory &amp; purchasing · the cycle</span>
+        <h2>From supplier to shelf — stock you can trust</h2>
+        <p>Warehouses, branches and vans are all stock locations. Purchases fill them, sales empty them, and reorder points keep the reps from running out.</p>
+        <ul class="steps" id="invlist">
+          <li><span class="n">1</span>Suppliers and raw materials — green beans, cardamom, packaging</li>
+          <li><span class="n">2</span>Purchase request → approval → purchase order</li>
+          <li><span class="n">3</span>Goods receipt into the warehouse, barcode scanned</li>
+          <li><span class="n">4</span>Stock by warehouse, branch and van · transfers</li>
+          <li><span class="n">5</span>Sales deplete stock → reorder point → new request</li>
+        </ul>
+      </div>
+      <div class="cycle" id="invcycle"></div>
+    </div>
+  </div>
+</section>
+
+<!-- INV 2 WAREHOUSES & STOCK -->
+<section class="slide" data-name="inv-stock">
+  <div class="content">
+    <div class="split">
+      <div>
+        <span class="kicker">Inventory · warehouses &amp; stock</span>
+        <h2>Define warehouses, see stock in each</h2>
+        <p>Main depot, branches and every rep's van are locations. Minimum levels per product trigger purchase requests; van stock is loaded in the morning and reconciled at check-out.</p>
+        <div class="ui ctl" style="justify-content:flex-start;margin-top:6px"><div class="seg" data-group="wh"><button data-v="Main depot" class="on">Main depot (Obour)</button><button data-v="Nasr City branch">Nasr City branch</button><button data-v="Van AS-01">Van AS-01</button></div></div>
+        <div id="stockTable" class="ui" style="margin-top:8px"></div>
+      </div>
+      <img class="pic wide" src="img/erp-warehouse.webp" alt="Hook Track ERP — stock on hand">
+    </div>
+  </div>
+</section>
+
+<!-- INV 3 PURCHASE FLOW -->
+<section class="slide" data-name="inv-purchase">
+  <div class="content">
+    <div class="split">
+      <div>
+        <span class="kicker">Purchasing · request → order → receipt</span>
+        <h2>Low stock becomes a purchase order</h2>
+        <div class="flow" id="poflow" style="margin-top:6px">
+          <div class="fstep"><span class="ic">🔔</span><span><b>Low stock detected</b><small>3-in-1 Classic · box 24 — on hand 40, minimum 120 · Main depot</small></span></div>
+          <div class="fstep"><span class="ic">📝</span><span><b>Purchase request PR-0231</b><small>400 boxes · raised by Hany Fouad, warehouse keeper</small></span></div>
+          <div class="fstep"><span class="ic">✅</span><span><b>Approved</b><small>Purchasing manager · budget check passed · 10:14</small></span></div>
+          <div class="fstep"><span class="ic">📤</span><span><b>Purchase order PO-0148 sent</b><small>Brand distributor · expected 2 Oct · 1,780 EGP per carton</small></span></div>
+          <div class="fstep"><span class="ic">📥</span><span><b>Goods received</b><small>400 boxes scanned into Main depot · supplier invoice matched</small></span></div>
+          <div class="fstep"><span class="ic">📈</span><span><b>Stock updated</b><small>On hand <b id="poStock">40</b> boxes · low-stock alert cleared</small></span></div>
+        </div>
+      </div>
+      <div style="display:grid;gap:10px;align-content:center">
+        <img class="pic wide" src="img/erp-purchase.webp" alt="Hook Track ERP — purchase order">
+        <div class="tiles"><div class="tile"><b>3 days</b><span>request → order, average</span></div><div class="tile"><b>98%</b><span>PO lines received in full</span></div><div class="tile"><b>0</b><span>van stock-outs this month</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INV 4 RAW MATERIALS -->
+<section class="slide" data-name="inv-raw">
+  <div class="content">
+    <div class="split">
+      <div>
+        <span class="kicker">Purchasing · suppliers &amp; raw materials</span>
+        <h2>Buy raw materials, produce loose coffee</h2>
+        <p>Suppliers with lead times and price history. Green beans, cardamom and packaging come in; roasting, grinding and packing turn them into the loose-coffee SKUs the reps sell.</p>
+        <table class="tbl" id="suptbl" style="margin-top:8px">
+          <tr><th>Material</th><th>Supplier</th><th>Unit</th><th>Lead time</th><th class="num">Last price</th></tr>
+          <tr class="anim"><td>Green coffee beans · Brazil</td><td>Cairo Coffee Importers</td><td>60 kg sack</td><td>14 days</td><td class="num">9,800</td></tr>
+          <tr class="anim"><td>Green coffee beans · Ethiopia</td><td>Nile Trading</td><td>60 kg sack</td><td>21 days</td><td class="num">11,400</td></tr>
+          <tr class="anim"><td>Cardamom pods</td><td>Aswan Spices</td><td>25 kg</td><td>7 days</td><td class="num">12,500</td></tr>
+          <tr class="anim"><td>Kraft bags 250g / 500g / 1kg</td><td>Delta Packaging</td><td>1,000 pcs</td><td>5 days</td><td class="num">1,200</td></tr>
+          <tr class="anim"><td>3-in-1 sachets (finished goods)</td><td>Brand distributor</td><td>carton 12 boxes</td><td>3 days</td><td class="num">1,780</td></tr>
+        </table>
+        <div class="chain" id="chain" style="margin-top:10px">
+          <div class="cn"><span>🫘</span>Green beans</div><i></i><div class="cn"><span>🔥</span>Roast</div><i></i><div class="cn"><span>⚙️</span>Grind + cardamom</div><i></i><div class="cn"><span>📦</span>Pack</div><i></i><div class="cn"><span>☕</span>Loose coffee SKUs</div>
+        </div>
+      </div>
+      <img class="pic wide" src="img/raw-materials.webp" alt="Coffee raw materials warehouse">
+    </div>
+  </div>
+</section>
+
 <!-- 15 REPORTS INTRO -->
 <section class="slide bg" data-bg="img/reports.webp" data-name="reports">
   <div class="content" style="max-width:720px">
     <span class="kicker">Reports</span>
     <h2>Every question a sales manager asks — answered live</h2>
     <p class="lead">Every report filters by rep, area, customer, product and period (today · week · month), exports to PDF / Excel, and can be scheduled by email.</p>
-    <div class="cards c2 stagger" style="max-width:640px">
+    <div class="cards c3 stagger" style="max-width:760px">
       <div class="card"><h3>🗓️ Plans</h3><p>Per rep — today, week, month. Who visits whom.</p></div>
       <div class="card"><h3>✅ Execution</h3><p>Visits done vs left, orders taken, time in store.</p></div>
       <div class="card"><h3>💰 Sales &amp; targets</h3><p>Sales per rep / product / area; target achievement.</p></div>
       <div class="card"><h3>🏪 Coverage &amp; integrity</h3><p>Unvisited customers, promo uplift, security flags.</p></div>
+      <div class="card"><h3>👤 HR &amp; payroll</h3><p>Attendance, late/absence, leave balances, payroll register.</p></div>
+      <div class="card"><h3>📦 Inventory &amp; purchasing</h3><p>Stock by warehouse, low stock, purchase orders, supplier lead times.</p></div>
     </div>
   </div>
 </section>
@@ -472,6 +710,8 @@
       <div class="card"><h3>🏷️ Products &amp; promotions</h3><ul><li>Product sales mix (3-in-1 vs loose)</li><li>Promotion usage &amp; uplift</li><li>Free goods issued</li><li>Price-list compliance</li></ul></div>
       <div class="card"><h3>🏪 Customers &amp; coverage</h3><ul><li>Active vs inactive customers</li><li>Not visited in 30+ days</li><li>New customers per month</li><li>Customer order history</li></ul></div>
       <div class="card"><h3>🛡️ Field integrity</h3><ul><li>Fake-GPS &amp; rooted-device flags</li><li>Out-of-geofence check-ins</li><li>Time &amp; distance per rep</li><li>Login &amp; device audit</li></ul></div>
+      <div class="card"><h3>👤 HR &amp; payroll</h3><ul><li>Daily / monthly attendance</li><li>Late, absence &amp; overtime</li><li>Leave balances &amp; requests</li><li>Payroll register &amp; payslips</li></ul></div>
+      <div class="card"><h3>📦 Inventory &amp; purchasing</h3><ul><li>Stock on hand by warehouse / van</li><li>Low stock &amp; reorder list</li><li>Stock movements &amp; van returns</li><li>Purchase orders, supplier lead time &amp; price history</li></ul></div>
       <div class="card"><h3>📤 Delivery &amp; automation</h3><ul><li>PDF / Excel export</li><li>Scheduled email reports</li><li>Filters: rep · area · period · product</li><li>Drill-down from map dot to record</li></ul></div>
     </div>
   </div>
@@ -483,7 +723,7 @@
     <span class="kicker">Hook Track</span>
     <h2 class="big">Every visit real. Every order right. Every number live.</h2>
     <div class="chips stagger" style="justify-content:center">
-      <span class="chip">ERP + mobile</span><span class="chip">Products · prices · promos</span><span class="chip">Fake-GPS &amp; root detection</span><span class="chip">Geofenced visits &amp; orders</span><span class="chip">Live map · reports · targets</span>
+      <span class="chip">ERP + mobile</span><span class="chip">Products · prices · promos</span><span class="chip">Fake-GPS &amp; root detection</span><span class="chip">Geofenced visits &amp; orders</span><span class="chip">Live map · reports · targets</span><span class="chip">HR · attendance · payroll</span><span class="chip">Inventory · purchasing</span>
     </div>
     <p class="lead" style="margin-top:10px">Questions?</p>
   </div>
