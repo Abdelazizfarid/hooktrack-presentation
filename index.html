@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hawk Track — Field Force Visibility You Can Trust</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M6 36c10-14 24-20 46-22-4 6-6 10-8 16 6 0 10-1 14-3-4 8-12 14-24 16l-6 10-2-9C16 43 10 40 6 36Z' fill='%23F5A524'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -14,7 +15,7 @@
   --text:#E6EAF2; --muted:#9AA6BF;
   --amber:#F5A524; --teal:#22D3EE; --green:#34D399; --red:#F87171; --purple:#A78BFA;
   --grad:linear-gradient(135deg,#F5A524 0%,#FFD166 50%,#22D3EE 100%);
-  --hd:'Space Grotesk',system-ui,sans-serif; --bd:'Inter',system-ui,sans-serif;
+  --hd:'Space Grotesk',system-ui,sans-serif,'Noto Color Emoji'; --bd:'Inter',system-ui,sans-serif,'Noto Color Emoji';
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%}
@@ -116,11 +117,11 @@ p,li{font-size:clamp(14px,1.35vw,20px);line-height:1.5;color:var(--muted)}
 /* ===== root scan ===== */
 .scanline{position:absolute;left:0;right:0;height:26%;background:linear-gradient(180deg,transparent,rgba(34,211,238,.35),transparent);animation:scan 2.6s ease-in-out infinite;z-index:4;pointer-events:none}
 @keyframes scan{0%{top:-26%}100%{top:100%}}
-.termlist{position:absolute;inset:44px 14px 18px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;line-height:1.7;color:#9fb3c8}
+.termlist{position:absolute;inset:44px 12px 18px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;line-height:1.8;color:#9fb3c8;white-space:nowrap}
 .termlist div{opacity:0;transform:translateX(-6px);transition:all .35s}
 .termlist div.on{opacity:1;transform:none}
 .termlist .ok{color:var(--green)}.termlist .no{color:var(--red)}
-.lock{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);padding:6px 14px;border-radius:999px;font-size:12px;font-weight:600;opacity:0;transition:all .5s}
+.lock{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);padding:6px 14px;border-radius:999px;font-size:12px;font-weight:600;opacity:0;transition:all .5s;white-space:nowrap}
 .lock.on{opacity:1}
 .lock.good{background:rgba(52,211,153,.15);color:#bbf7d0;border:1px solid rgba(52,211,153,.5)}
 .lock.bad{background:rgba(248,113,113,.15);color:#fecaca;border:1px solid rgba(248,113,113,.5)}
@@ -268,16 +269,21 @@ p,li{font-size:clamp(14px,1.35vw,20px);line-height:1.5;color:var(--muted)}
 </section>
 
 <!-- 5 SECURITY INTRO -->
-<section class="slide bg" data-bg="img/security.webp" data-name="security">
-  <div class="content" style="max-width:720px">
-    <span class="kicker">Security first</span>
-    <h2>A visit is only worth recording if the location is real</h2>
-    <p class="lead">Before a check-in is accepted, the app proves two things about the phone.</p>
-    <div class="cards c2 stagger" style="max-width:640px">
-      <div class="card"><h3>🛰️ The location is genuine</h3><p>Not injected by a fake-GPS app, not replayed, not teleported.</p></div>
-      <div class="card"><h3>📱 The device is trustworthy</h3><p>Not rooted, not running in an emulator, not tampered with.</p></div>
+<section class="slide" data-name="security">
+  <div class="content">
+    <div class="split">
+      <div>
+        <span class="kicker">Security first</span>
+        <h2>A visit is only worth recording if the location is real</h2>
+        <p class="lead" style="margin:10px 0">Before a check-in is accepted, the app proves two things about the phone.</p>
+        <div class="cards c2 stagger">
+          <div class="card"><h3>🛰️ The location is genuine</h3><p>Not injected by a fake-GPS app, not replayed, not teleported.</p></div>
+          <div class="card"><h3>📱 The device is trustworthy</h3><p>Not rooted, not running in an emulator, not tampered with.</p></div>
+        </div>
+        <p class="frag" style="margin-top:12px">Fail either check → the visit is <span class="red">flagged</span> and the manager is alerted in real time.</p>
+      </div>
+      <img class="pic wide" src="img/security.webp" alt="Security shield with hawk emblem">
     </div>
-    <p class="frag">Fail either check → the visit is <span class="red">flagged</span> and the manager is alerted in real time.</p>
   </div>
 </section>
 
@@ -309,7 +315,7 @@ p,li{font-size:clamp(14px,1.35vw,20px);line-height:1.5;color:var(--muted)}
           <div class="sig" style="right:6%;bottom:12%">📶 Wi-Fi</div>
           <div class="sig" style="left:10%;bottom:20%">🛰️ Satellites</div>
         </div>
-        <img class="pic" src="img/fake-gps.webp" alt="Fake GPS detection" style="max-height:26vh;aspect-ratio:16/6">
+        <img class="pic" src="img/fake-gps.webp" alt="Fake GPS detection" style="max-height:28vh;aspect-ratio:16/7;object-position:center 35%">
       </div>
     </div>
   </div>
@@ -319,21 +325,21 @@ p,li{font-size:clamp(14px,1.35vw,20px);line-height:1.5;color:var(--muted)}
 <section class="slide" data-name="root">
   <div class="content">
     <div class="split rev">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center">
-        <div class="phone">
+      <div style="display:grid;grid-template-columns:240px 1fr;gap:20px;align-items:center">
+        <div class="phone" style="width:240px">
           <div class="notch"></div>
           <div class="screen">
             <div class="scanline"></div>
-            <div style="position:absolute;top:22px;left:14px;font-size:11px;color:var(--teal);letter-spacing:.1em">DEVICE INTEGRITY SCAN</div>
+            <div style="position:absolute;top:22px;left:12px;font-size:10px;color:var(--teal);letter-spacing:.1em">DEVICE INTEGRITY SCAN</div>
             <div class="termlist" id="rootlist">
-              <div>› su binary ............ <span class="ok">none</span></div>
-              <div>› Magisk / SuperSU ..... <span class="ok">none</span></div>
-              <div>› build tags ........... <span class="ok">release-keys</span></div>
-              <div>› system partition ..... <span class="ok">read-only</span></div>
-              <div>› Play Integrity ....... <span class="ok">MEETS_DEVICE</span></div>
-              <div>› emulator / VM ........ <span class="ok">no</span></div>
-              <div>› debugger / hooks ..... <span class="ok">none</span></div>
-              <div>› developer options .... <span class="ok">off</span></div>
+              <div>› su binary ....... <span class="ok">none</span></div>
+              <div>› Magisk/SuperSU .. <span class="ok">none</span></div>
+              <div>› build tags . <span class="ok">release-keys</span></div>
+              <div>› system part. <span class="ok">read-only</span></div>
+              <div>› Play Integrity <span class="ok">MEETS_DEV</span></div>
+              <div>› emulator / VM ... <span class="ok">no</span></div>
+              <div>› debugger/hooks .. <span class="ok">none</span></div>
+              <div>› developer opts .. <span class="ok">off</span></div>
             </div>
             <div class="lock good" id="rootlock">🔒 Device trusted</div>
           </div>
@@ -574,8 +580,13 @@ onEnter.journey=()=>{
 onLeave.journey=()=>clearTimers('journey');
 
 /* ===================== maps ===================== */
-const TILES='https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-const ATTR='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>';
+/* Esri Dark Gray Canvas: free, no API key (max zoom 16). */
+const ESRI='https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_{l}/MapServer/tile/{z}/{y}/{x}';
+const ATTR='Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, DeLorme, NAVTEQ';
+function basemap(map){
+  L.tileLayer(ESRI.replace('{l}','Base'),{attribution:ATTR,maxZoom:16}).addTo(map);
+  L.tileLayer(ESRI.replace('{l}','Reference'),{maxZoom:16,opacity:.8}).addTo(map);
+}
 const repIcon=(label,color)=>L.divIcon({className:'',html:`<div class="rep-icon" style="background:${color};box-shadow:0 0 0 6px ${color}44,0 8px 20px rgba(0,0,0,.5)"><div class="ping" style="border-color:${color}"></div>${label}</div>`,iconSize:[34,34],iconAnchor:[17,17]});
 const storeIcon=(done)=>L.divIcon({className:'',html:`<div class="store-icon ${done?'done':''}"></div>`,iconSize:[14,14],iconAnchor:[7,7]});
 const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];
@@ -595,7 +606,7 @@ let live=null;
 onEnter.live=()=>{
   if(!live){
     const map=L.map('livemap',{zoomControl:false,attributionControl:true,scrollWheelZoom:false});
-    L.tileLayer(TILES,{attribution:ATTR,maxZoom:19}).addTo(map);
+    basemap(map);
     const storeMarkers=liveStores.map(s=>L.marker(s.p,{icon:storeIcon(false)}).addTo(map).bindTooltip(s.n,{direction:'top',offset:[0,-8],className:'tt'}));
     liveStores.forEach(s=>L.circle(s.p,{radius:120,color:'#22D3EE',weight:1,fillOpacity:.08,dashArray:'4 4'}).addTo(map));
     const trail=L.polyline([],{color:'#F5A524',weight:4,opacity:.9}).addTo(map);
@@ -615,7 +626,7 @@ onEnter.live=()=>{
   let visited=0,dist=0,t0=performance.now(),leg=0,pause=0;
   const LEG_MS=3200,PAUSE_MS=900;
   function frame(now){
-    if(!slides[cur].dataset.name==='live')return;
+    if(slides[cur].dataset.name!=='live')return;
     if(leg>=liveStores.length-1){return}
     const a=liveStores[leg].p,b=liveStores[leg+1].p;
     let t=(now-t0)/LEG_MS;
@@ -656,7 +667,7 @@ let dash=null;
 onEnter.dashboard=()=>{
   if(!dash){
     const map=L.map('dashmap',{zoomControl:false,scrollWheelZoom:false});
-    L.tileLayer(TILES,{attribution:ATTR,maxZoom:19}).addTo(map);
+    basemap(map);
     const layers={areas:L.layerGroup().addTo(map),routes:L.layerGroup().addTo(map),flags:L.layerGroup().addTo(map)};
     areas.forEach(a=>L.polygon(a.poly,{color:a.c,weight:1.5,fillColor:a.c,fillOpacity:.10,dashArray:'6 4'}).addTo(layers.areas).bindTooltip(a.n,{permanent:true,direction:'center',className:'tt area-tt'}));
     reps.forEach(r=>{
